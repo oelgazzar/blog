@@ -1,6 +1,10 @@
-<a href="{{ url_for('index')}}">All posts</a>
-<h1>{{ post.title }}</h1>
-<h4>{{ post.date() }}</h4>
-<p>{{  post.body }}</p>
-<a href="{{ url_for('edit', post_id=post.id)}}">Edit</a>
-<hr>
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+	<a href="{{ url_for('index')}}" class="waves-effect waves-light right">All posts<i class="material-icons right">chevron_right</i></a>
+	<h1>{{ post.title }}</h1>
+	<h4>{{ post.date() }}</h4>
+	<p>{{  post.body }}</p>
+	<a href="{{ url_for('edit', post_id=post.id) }}" class="waves-effect waves-light btn">Edit</a>
+{% endblock %}

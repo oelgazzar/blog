@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+		<title>{% block title %}{% endblock %}</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="icon" href="{{ url_for('static', filename='images/feather.png') }}">
+    {% endblock %}
+</head>
+<body>
+    <div id="header"><div class="container">{% block header %}<a href={{ url_for('index') }}>
+		<img src="{{ url_for('static', filename='images/feather.png') }}"></a>{% endblock %}</div></div>
+    <div id="content"><div class="container">{% block content %}{% endblock %}</div></div>
+    <footer>
+		<div class="container">
+			{% block footer %}
+			<hr>
+			&copy; Copyright 2017
+			{% endblock %}
+		</div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+</html>
