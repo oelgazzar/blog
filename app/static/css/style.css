@@ -1,0 +1,18 @@
+footer .container {
+	margin-top: 100px;
+}
+
+.login {
+	padding: 10px 20px;
+	width: 40%;
+	margin: 30px auto;
+}
+
+.login img {
+	display: block;
+	margin: auto;
+}
+
+.login li {
+	color: red;
+}

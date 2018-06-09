@@ -1,8 +1,25 @@
-<form method='POST'>
-	<label>Title</label>
-	<input type='text' name='title'><br>
-	<label>Body</label>
-	<textarea rows='10' cols='50' name='body'></textarea><br>
-	<input type='submit' value='Submit'>
-	<a href="{{ url_for('index') }}">cancel</a>
-</form>
+{% extends "base.html" %}
+
+{% block title %}New Post{% endblock %}
+{% block content %}
+	<form method="POST">
+		<div class="row">
+			<div class="input-field col s4">
+				<input id="title" type="text" name="title" value="{% block post_title%}{% endblock %}">
+				<label for="title">Title</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<textarea id="body" name="body" class="materialize-textarea">{% block post_body%}{% endblock %}</textarea>
+				<label for="body">Body</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<input type="submit" value="Submit" class="btn">
+				<a href="{{ url_for('index') }}">cancel</a>
+			</div>
+		</div>
+	</form>
+{% endblock %}

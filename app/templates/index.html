@@ -1,10 +1,15 @@
-<a href="{{ url_for('new') }}">New post</a>
-{% if posts %}
-	<ul>
-	{% for post in posts %}
-		<li><a href="{{ url_for('detail', post_id=post.id) }}">{{ post.title }}</a>&nbsp;{{ post.date() }}</li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<h3>No posts.</h3>
-{% endif %}
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+{% block content %}
+	<a href="{{ url_for('new') }}" class="waves-effect waves-light btn">New Post</a>
+	{% if posts %}
+		<div class="collection">
+		{% for post in posts %}
+			<a href="{{ url_for('detail', post_id=post.id) }}" class="collection-item">{{ post.title }}<span class="right">{{ post.date() }}</span></a>
+		{% endfor %}
+		</div>
+	{% else %}
+		<h3>No posts.</h3>
+	{% endif %}
+{% endblock %}

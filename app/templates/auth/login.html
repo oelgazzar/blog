@@ -1,17 +1,33 @@
-{%with messages = get_flashed_messages()%}
-	{%if messages%}
-		{%for message in messages%}
-			<ul>{{message}}</ul>
-		{%endfor%}
-	{%endif%}
-{%endwith%}
-{{all_identical_users}}
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+	<div class="login z-depth-2">
 		<form method="POST">
-			<label for="username">Username</label>
-			<input name="username" id="username" required>
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" required>
-			<input type="submit" name="Login">
-			
-		</form>
-	
+			<a href={{ url_for('index') }}><img src="{{ url_for('static', filename='images/feather.png') }}"></a>
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="text" name="username" id="username" required>
+					<label for="username">Username</label>
+				</div>
+			<div class="input-field col s12">
+				<input type="password" name="password" id="password" required>
+				<label for="password">Password</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="submit" value="{% block button_label %}Login{%endblock %}" class="{% block button_color %}blue{% endblock %} white-text btn">
+			</div>
+		</form>	
+		{%with messages = get_flashed_messages()%}
+			{%if messages%}
+				<ul>
+				{%for message in messages%}
+					<li>{{message}}</li>
+				{%endfor%}
+				</ul>
+			{%endif%}
+		{%endwith%}
+	</div>
+{% endblock %}
+{% block footer %}{% endblock %}

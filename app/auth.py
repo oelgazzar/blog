@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/register', methods=['POST', 'GET'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
