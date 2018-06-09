@@ -1,6 +1,7 @@
 from . import app, db
 from .models import Post
 from flask import render_template, redirect, url_for, request
+from flask_login import login_required
 
 
 @app.route('/')
@@ -17,6 +18,7 @@ def detail(post_id):
 
 
 @app.route('/new', methods=['GET', 'POST'])
+@login_required
 def new():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -30,6 +32,7 @@ def new():
 
 
 @app.route('/edit/<int:post_id>', methods=['GET', 'POST'])
+@login_required
 def edit(post_id):
     post = Post.query.get(post_id)
     if request.method == 'POST':
