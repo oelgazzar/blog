@@ -1,6 +1,6 @@
 from . import app, db
 from .models import Post
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_required
 
 
@@ -42,3 +42,14 @@ def edit(post_id):
         return redirect(url_for('detail', post_id=post_id))
     else:  # GET
         return render_template('edit.html', post=post)
+
+
+@app.route('/delete/<int:post_id>')
+@login_required
+def delete(post_id):
+
+    post_del = Post.query.filter(Post.id == post_id).delete()
+    db.session.commit()
+    msg = 'Post Has been Deleted'
+
+    return redirect(url_for('index'))
