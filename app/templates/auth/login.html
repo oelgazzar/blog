@@ -1,0 +1,17 @@
+{%with messages = get_flashed_messages()%}
+	{%if messages%}
+		{%for message in messages%}
+			<ul>{{message}}</ul>
+		{%endfor%}
+	{%endif%}
+{%endwith%}
+{{all_identical_users}}
+		<form method="POST">
+			<label for="username">Username</label>
+			<input name="username" id="username" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" required>
+			<input type="submit" name="Login">
+			
+		</form>
+	
