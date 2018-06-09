@@ -7,7 +7,33 @@
 	<p class="date">{{ post.date() }}</p>
 	<p><pre class="body">{{  post.body }}</pre></p>
 	{% if current_user.is_authenticated %}
+<!--
 		<a href="{{ url_for('edit', post_id=post.id) }}" class="waves-effect waves-light btn left">Edit</a>
-		<h5 style="color:#FF0000">  <a href="{{ url_for('delete', post_id=post.id)}}" class="left" >Delete</a>  </h5>
+		<h5 style="color:#FF0000"><a href="{{ url_for('delete', post_id=post.id)}}" class="left" >Delete</a></h5>
+-->
+		<!-- Dropdown Trigger -->
+		<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Options</a>
+
+		<!-- Dropdown Structure -->
+		<ul id='dropdown1' class='dropdown-content'>
+			<li><a href="{{ url_for('edit', post_id=post.id) }}">Edit</a></li>
+<!--
+			<li><a href="{{ url_for('delete', post_id=post.id)}}">Delete</a></li>
+-->
+			<!-- Modal Trigger -->
+			<li><a href="#confirm-delete" class="modal-trigger">Delete</a>
+
+		</ul>
+		
+		<!-- Modal Structure -->
+		<div id="confirm-delete" class="modal">
+			<div class="modal-content">
+				<p>Sure you wanna delete this precious post?</p>
+			</div>
+			<div class="modal-footer">
+				<a href="{{ url_for('delete', post_id=post.id) }}" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+				<a href="" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+			</div>
+		  </div></li>
 	{% endif %}
 {% endblock %}

@@ -26,7 +26,7 @@ def new():
         new_post = Post(title=title, body=body)
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('detail', post_id=new_post.id))
     else:  # GET
         return render_template('new.html')
 
