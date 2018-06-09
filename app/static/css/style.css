@@ -1,3 +1,7 @@
+body {
+	font-family: Cairo, sans-serif;
+}
+
 footer .container {
 	margin-top: 100px;
 }
@@ -16,3 +20,20 @@ footer .container {
 .login li {
 	color: red;
 }
+
+.title, .date, .body , textarea{
+	text-align: right;
+	direction: rtl;
+	font-family: inherit;
+}
+
+.date {
+	font-size: .7em;
+	direction: ltr;
+}
+
+pre {
+	font-family: inherit;
+	white-space: pre-wrap;
+}
+

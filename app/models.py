@@ -11,7 +11,7 @@ class Post(db.Model):
     pub_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def date(self):
-        return self.pub_date.strftime('%d %B - %H:%M:%S (UTC)')
+        return self.pub_date.strftime('%d %B - %H:%M')
 
     def __repr__(self):
         return '<Post %r>' % self.title
