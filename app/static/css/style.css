@@ -22,7 +22,7 @@ footer .container {
 }
 
 .title, .date, .body , textarea{
-	text-align: right;
+	text-align: justify;
 	direction: rtl;
 	font-family: inherit;
 }
@@ -30,6 +30,7 @@ footer .container {
 .date {
 	font-size: .7em;
 	direction: ltr;
+	text-align: right
 }
 
 pre {
