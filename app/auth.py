@@ -9,16 +9,17 @@ from werkzeug.urls import url_parse
 # define blueprint for urls related to authentication
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-
+"""
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """
-    a view for registering the user
-    When GET: return the register page
-    When POST: processing data after submitting and if valid save it to the database
-    if there is any error return to register page and flash the error
 
-    """
+# a view for registering the user
+# When GET:
+#     return the register page
+# When POST:
+#     processing data after submitting and if valid save it to the database
+# if there is any error return to register page and flash the error
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -42,6 +43,7 @@ def register():
             return redirect(url_for('auth.login'))
     else:
         return render_template('auth/register.html')
+"""
 
 
 @bp.route('/login', methods=['GET', 'POST'])
