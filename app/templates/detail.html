@@ -2,9 +2,9 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-	<a href="{{ url_for('index')}}" class="waves-effect waves-light right">All posts<i class="material-icons right">chevron_right</i></a>
-	<h1>{{ post.title }}</h1>
-	<h4>{{ post.date() }}</h4>
-	<p>{{  post.body }}</p>
-	<a href="{{ url_for('edit', post_id=post.id) }}" class="waves-effect waves-light btn">Edit</a>
+	<a href="{{ url_for('index')}}" class="waves-effect waves-light left">All posts<i class="material-icons left">chevron_left</i></a>
+	<h1 class="title">{{ post.title }}</h1>
+	<p class="date">{{ post.date() }}</p>
+	<p><pre class="body">{{  post.body }}</pre></p>
+	<a href="{{ url_for('edit', post_id=post.id) }}" class="waves-effect waves-light btn right">Edit</a>
 {% endblock %}
