@@ -3,3 +3,4 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block post_title%}{{ post.title }}{% endblock %}
 {% block post_body%}{{ post.body }}{% endblock %}
+{% block return %}{{ url_for('detail', post_id=post.id) }}{% endblock %}
