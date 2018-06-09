@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}Login{% endblock %}
 {% block header %}{% endblock %}
 {% block content %}
 	<div class="login z-depth-2">
@@ -16,7 +16,7 @@
 				<label for="password">Password</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="submit" value="{% block button_label %}Login{%endblock %}" class="blue white-text btn">
+				<input type="submit" value="{% block button_label %}Login{%endblock %}" class="{% block button_color %}blue{% endblock %} white-text btn">
 			</div>
 		</form>	
 		{%with messages = get_flashed_messages()%}
