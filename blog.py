@@ -1,5 +1,5 @@
-from app import app
+from app import app, db, models
 
 @app.shell_context_processor
 def _():
-	return {'db': db, 'Post': Post, 'Category': Category}
+	return {'db': db, 'Post': models.Post, 'Comment':models.Comment}

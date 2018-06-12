@@ -1,5 +1,5 @@
 from . import app, db
-from .models import Post
+from .models import Post, Comment
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_required
 
@@ -11,11 +11,15 @@ def index():
     return render_template('index.html', posts=posts)
 
 
-@app.route('/<int:post_id>')
+@app.route('/<int:post_id>', methods=['GET', 'POST'])
 def detail(post_id):
-    post = Post.query.get(post_id)
-    return render_template('detail.html', post=post)
-
+	post = Post.query.get(post_id)
+	if request.method == 'POST': # add comment
+		c = Comment(name=request.form.get('name'),
+			body=request.form.get('body'), post=post)
+		db.session.commit()
+		return redirect(url_for('detail', post_id=post_id))
+	return render_template('detail.html', post=post, comments=post.comments)
 
 @app.route('/new', methods=['GET', 'POST'])
 @login_required

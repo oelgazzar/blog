@@ -21,10 +21,26 @@ footer .container {
 	color: red;
 }
 
-.title, .date, .body , textarea{
+.title, .date, .body{
 	text-align: justify;
 	direction: rtl;
 	font-family: inherit;
+}
+
+.comment {
+/*
+	border: 1px solid grey;
+*/
+/*
+	border-radius: 0 10px 10px 0;
+*/
+	padding: 10px;
+	width: 50%;
+	margin: 10px 0;
+}
+
+.input-field {
+	margin: 5px 0 0 0;
 }
 
 .date {
