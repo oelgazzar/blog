@@ -37,12 +37,29 @@
 		  </div></li>
 	{% endif %}
 	<hr>
-	<h4>Comments</h4>
-	<div class="comment-section">
+	<h4 align="center"> Comments </h4>
+	<div align="center" class="comment-section">
 		{% for comment in comments %}
+			<!-- <div class="z-depth-1 comment">
+				<h5 style="color: blue" class="date left"> <b style="color: red">since:</b> {{ comment.date() }} </h5>
+				<br> <br>
+
+				<h6 class="col s6 name">{{ comment.name }} <i class=" medium material-icons">face</i>  </h6>
+				
+				<p>{{ comment.body | striptags }}</p>
+			</div> -->
+
 			<div class="z-depth-1 comment">
-				<h6>{{ comment.name }} <span class="date right">{{ comment.date() }}</span></h6>
-				<p>{{ comment.body }}</p>
+				<div class="row">
+					<h5 style="color: blue" class="date left"><b style="color: red">since:</b>{{comment.date()}}</h5>
+
+					<br> <br>
+
+					<h6 class="col s12 name">{{ comment.name }} </h6>
+					<!-- <span class=" medium material-icons">face</span>  -->
+					
+					<p>{{ comment.body | striptags }}</p>
+				</div>
 			</div>
 		{% endfor %}
 		<form method="POST">
@@ -55,7 +72,7 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<script src="//cdn.ckeditor.com/4.9.2/basic/ckeditor.js"></script>
-					
+
 					<textarea id="body" name="body" class="materialize-textarea"></textarea>
 
 				</div>
