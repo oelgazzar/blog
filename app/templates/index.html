@@ -32,7 +32,7 @@
 						<div class="card-content white-text">
 							<span class="card-title title">{{ post.title }}</span>
 							<p class="date">{{ post.date() }}</p>
-							<p class="truncate body">{{ post.body }}</p>
+							<p class="truncate body">{{ post.body | striptags }}</p>
 						</div>
 						<div class="card-action">
 							<a href="{{ url_for('detail', post_id=post.id) }}">Read</a>

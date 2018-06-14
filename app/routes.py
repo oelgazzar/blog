@@ -2,6 +2,7 @@ from . import app, db
 from .models import Post, Comment
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_required
+from flask import Markup
 
 
 @app.route('/')
@@ -13,13 +14,14 @@ def index():
 
 @app.route('/<int:post_id>', methods=['GET', 'POST'])
 def detail(post_id):
-	post = Post.query.get(post_id)
-	if request.method == 'POST': # add comment
-		c = Comment(name=request.form.get('name'),
-			body=request.form.get('body'), post=post)
-		db.session.commit()
-		return redirect(url_for('detail', post_id=post_id))
-	return render_template('detail.html', post=post, comments=post.comments)
+    post = Post.query.get(post_id)
+    if request.method == 'POST':  # add comment
+        c = Comment(name=request.form.get('name'),
+                    body=request.form.get('body'), post=post)
+        db.session.commit()
+        return redirect(url_for('detail', post_id=post_id))
+    return render_template('detail.html', post=post, comments=post.comments)
+
 
 @app.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -27,6 +29,7 @@ def new():
     if request.method == 'POST':
         title = request.form.get('title')
         body = request.form.get('body')
+        # body = Markup(body)
         new_post = Post(title=title, body=body)
         db.session.add(new_post)
         db.session.commit()
