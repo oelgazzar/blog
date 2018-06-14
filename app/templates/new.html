@@ -5,13 +5,17 @@
 	<form method="POST">
 		<div class="row">
 			<div class="input-field col s4">
-				<input id="title" type="text" name="title" value="{% block post_title%}{% endblock %}" class="title">
+				<input align="center" id="title" type="text" name="title" value="{% block post_title%}{% endblock %}" class="title">
 				<label for="title">Title</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
-				<textarea id="body" name="body" class="materialize-textarea body">{% block post_body%}{% endblock %}</textarea>
+				
+				<textarea id="body" name="body" class="materialize-textarea body">{% block post_body%}{% endblock %}
+				</textarea>
+				
+				
 			</div>
 		</div>
 		<div class="row">

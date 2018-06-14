@@ -6,8 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
     instance = M.Modal.init(elems);
 });
 
-ClassicEditor
-        .create( document.querySelector( '#body' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+CKEDITOR.replace( 'body' );
+
+
+
+// ClassicEditor
+//         .create( document.querySelector( '#body' ) )
+//         .catch( error => {
+//             console.error( error );
+//         } );
+
+
+
+			
