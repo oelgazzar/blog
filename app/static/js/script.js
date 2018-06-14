@@ -5,3 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elems = document.querySelectorAll('.modal');
     instance = M.Modal.init(elems);
 });
+
+ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
