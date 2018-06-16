@@ -1,4 +1,46 @@
-{% extends "auth/login.html" %}
+{% from 'auth/_formhelpers.html' import render_field %}
+{% extends "base.html" %}
+
 {% block title %}Register{% endblock %}
-{% block button_label %}Register{% endblock %}
-{% block button_color %}red{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+	<div class="login z-depth-2">
+		<form method="POST" action="{{url_for('auth.register')}}">
+			<a href={{ url_for('index') }}><img src="{{ url_for('static', filename='images/feather.png') }}"></a>
+			<div class="row">
+				<div class="input-field col s12">
+					{{form.csrf_token}}
+					{{render_field(form.username)}}
+					{{render_field(form.password)}}
+
+					<!-- <input type="text" name="username" id="username" required> -->
+					<!-- <label for="username">Username</label> -->
+				</div>
+			<!-- <div class="input-field col s12">
+				<input type="password" name="password" id="password" required>
+				<label for="password">Password</label>
+			</div> -->
+			<div class="input-field col s12">
+				<input type="submit" value="{% block button_label %}Register{%endblock %}" class="{% block button_color %}blue{% endblock %} white-text btn">
+			</div>
+		</form>	
+		
+		{% if form.errors %}
+			<ul>
+				{% for error in errors %}
+					<li>{{error}}</li>
+				{% endfor %}
+			</ul>
+		{%  endif %}
+		
+		{%with messages = get_flashed_messages()%}
+			{%if messages%}
+				<ul>
+				{%for message in messages%}
+					<li>{{message}}</li>
+				{%endfor%}
+				</ul>
+			{%endif%}
+		{%endwith%}
+	</div>
+{% endblock %}
