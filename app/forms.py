@@ -12,3 +12,7 @@ class AuthForm(Form):
         'PASSWORD', validators=[
             DataRequired(), InputRequired(
                 message='please write strong password')])
+<<<<<<< HEAD
+=======
+
+>>>>>>> form
