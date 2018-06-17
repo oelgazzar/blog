@@ -8,6 +8,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     body = db.Column(db.Text, nullable=False)
+    filename = db.Column(db.String, nullable=True)
+    file_url = db.Column(db.String, nullable=True)
     pub_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     comments = db.relationship('Comment', backref='post', lazy=True)
 
@@ -27,16 +29,17 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '{}'.format(self.username)
 
+
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), default='Anonymous')
     body = db.Column(db.String(140), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
-    
+
     def date(self):
         return self.timestamp.strftime('%d %B - %I:%M %P')
-    
+
     def __repr__(self):
         return '<Comment %r>' % self.body
 
