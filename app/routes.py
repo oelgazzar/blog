@@ -2,7 +2,7 @@ from . import app, db
 from .models import Post, Comment
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_required
-from flask import Markup
+from .forms import PostForm, images
 
 
 @app.route('/')
@@ -26,29 +26,33 @@ def detail(post_id):
 @app.route('/new', methods=['GET', 'POST'])
 @login_required
 def new():
-    if request.method == 'POST':
-        title = request.form.get('title')
-        body = request.form.get('body')
-        # body = Markup(body)
-        new_post = Post(title=title, body=body)
+    form = PostForm()
+    if request.method == 'POST' and form.validate():
+
+        title = form.title.data
+        body = form.body.data
+        filename = images.save(request.files['image'])
+        file_url = images.url(filename)
+        new_post = Post(title=title, body=body, filename=filename, file_url=file_url)
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('detail', post_id=new_post.id))
     else:  # GET
-        return render_template('new.html')
+        return render_template('new.html', form=form)
 
 
 @app.route('/edit/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit(post_id):
+    form = PostForm()
     post = Post.query.get(post_id)
     if request.method == 'POST':
-        post.title = request.form.get('title')
-        post.body = request.form.get('body')
+        post.title = form.title.data
+        post.body = form.body.data
         db.session.commit()
         return redirect(url_for('detail', post_id=post_id))
     else:  # GET
-        return render_template('edit.html', post=post)
+        return render_template('edit.html', post=post, form=form)
 
 
 @app.route('/delete/<int:post_id>')
