@@ -13,14 +13,14 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 """
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    """
-    a view for registering the user
-    When GET:
-        return the register page
-    When POST:
-        processing data after submitting and if valid save it to the database
-    if there is any error return to register page and flash the error
-    """
+
+# a view for registering the user
+# When GET:
+#     return the register page
+# When POST:
+#     processing data after submitting and if valid save it to the database
+# if there is any error return to register page and flash the error
+
 
     form = AuthForm(request.form)
     if request.method == 'POST' and form.validate():
