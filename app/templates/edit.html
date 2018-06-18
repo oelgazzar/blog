@@ -1,6 +1,7 @@
 {% extends "new.html" %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{# {% block title %}{{ post.title }}{% endblock %}
 {% block post_title%}{{ post.title }}{% endblock %}
-{% block post_body%}{{ post.body }}{% endblock %}
+{% block post_body%}{{ post.body }}{% endblock %} #}
+{%block image_preview%} <img src="{{post.file_url}}" alt="{{post.filename}}"> {%endblock%}
 {% block return %}{{ url_for('detail', post_id=post.id) }}{% endblock %}

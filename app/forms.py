@@ -20,7 +20,8 @@ class AuthForm(Form):
 
 
 class PostForm(Form):
-    title = StringField('title', validators=[DataRequired()])
+
+    title = StringField('title', default='title', validators=[DataRequired()])
     body = TextAreaField('body', validators=[DataRequired()])
     image = FileField(
         'image', validators=[

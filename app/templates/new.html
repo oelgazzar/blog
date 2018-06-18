@@ -7,7 +7,7 @@
 	<form  method="POST"  enctype="multipart/form-data">
 		<!-- <div class="row">
 			<div class="input-field col s4">
-				<input id="title" type="text" name="title" value="{% block post_title%}{% endblock %}" class="title">
+				<input id="title" type="text" name="title" value="" class="title">
 				<label for="title">Title</label>
 			</div>
 		</div> -->
@@ -16,9 +16,10 @@
 			<div class="input-field col s12">
 				{{form.csrf_token}}
 				<dl>
+
 					{{render_field(form.title)}}
 					{{render_field(form.body)}}
-					{{render_field(form.post_image)}}
+					{{render_field(form.image)}}
 
 				</dl>
 				{# <textarea id="body" name="body" class="materialize-textarea body">{% block post_body%}{% endblock %}
@@ -43,4 +44,6 @@
         	
 		</div>
 	</form>
+	<!-- for image preview during edit -->
+	{%block image_preview%}{%endblock%}
 {% endblock %}

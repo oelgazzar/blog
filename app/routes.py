@@ -44,14 +44,23 @@ def new():
 @app.route('/edit/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit(post_id):
-    form = PostForm()
     post = Post.query.get(post_id)
+    form = PostForm()
+
     if request.method == 'POST':
+
         post.title = form.title.data
         post.body = form.body.data
+        if 'image' in request.files:
+            post.filename = images.save(request.files['image'])
+            post.file_url = images.url(post.filename)
         db.session.commit()
         return redirect(url_for('detail', post_id=post_id))
     else:  # GET
+        form.title.data = post.title
+        form.body.data = post.body
+        # form.image.data = post.file_url
+        # form.populate_obj(post)
         return render_template('edit.html', post=post, form=form)
 
 
