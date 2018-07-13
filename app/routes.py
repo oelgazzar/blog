@@ -17,7 +17,7 @@ def detail(post_id):
     post = Post.query.get(post_id)
     if request.method == 'POST':  # add comment
         c = Comment(name=request.form.get('name'),
-                    body=request.form.get('body'), post=post)
+                    body=request.form.get('comment-body'), post=post)
         db.session.commit()
         return redirect(url_for('detail', post_id=post_id))
     return render_template('detail.html', post=post, comments=post.comments)

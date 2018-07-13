@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     instance = M.Modal.init(elems);
 });
 
-CKEDITOR.replace( 'body' );
+CKEDITOR.replace('body');
 
 
 
