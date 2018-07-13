@@ -52,12 +52,12 @@
 				<p>{{ comment.body | striptags }}</p>
 			</div> -->
 
-			<div class="z-depth-1 comment">
+			<div class="comment">
 				<div class="row">
-					<div style="color: blue" class="date left">{{comment.date()}}</div>
-					<h6 class="col s12 name">{{ comment.name }} </h6>
+					<h6 dir="rtl" class="col s12 name teal-text">{{ comment.name }} </h6>
 					<!-- <span class=" medium material-icons">face</span>  -->
-					<p>{{ comment.body | striptags }}</p>
+					<p dir="rtl">{{ comment.body | striptags }}</p>
+					<div class="date grey-text">{{comment.date()}}</div>
 				</div>
 			</div>
 		{% endfor %}
