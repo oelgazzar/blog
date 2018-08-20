@@ -53,3 +53,7 @@ pre {
 	white-space: pre-wrap;
 }
 
+.card .card-image img {
+	max-height: 200px;
+}
+

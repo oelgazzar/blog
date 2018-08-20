@@ -2,52 +2,38 @@
 
 {% block title %}Blog{% endblock %}
 {% block content %}
-	
 	{% if current_user.is_authenticated %}
-
 	<nav style="background-color: #0B4C5F">
-
 	    <div class="nav-wrapper">
-	      
 	      <ul id="nav-mobile" class="left hide-on-med-and-down">
-	        
-	        <li>
-					<a href="{{ url_for('auth.logout') }}" class="waves-effect waves-light btn">Logout</a>
-	        </li>
+	        <li><a href="{{ url_for('auth.logout') }}" class="waves-effect waves-light btn">Logout</a></li>
 	        <li> <a href="{{ url_for('new') }}" class="waves-effect waves-light btn">New Post</a> </li>
-	       
-	        
 	      </ul>
-	   
 	    </div>
-
 	</nav>
 	{% endif %}
-
 	{% if posts %}
 			<div class="row">
 			{% for post in posts %}
 				<div class="col s12 m6">
-					<div class="card blue-grey darken-1">
-						<div class="card-content white-text">
-							<span class="card-title title">{{ post.title }}</span>
-							<p class="date">{{ post.date() }}</p>
-							<p class="truncate body">{{ post.body | striptags }}</p>
+					<div class="card hoverable post" onclick="window.location='{{ url_for('detail', post_id=post.id) }}'"
+						style="cursor: pointer">
+						<div class="card-image">
+<!--
+							<img src="https://materializecss.com/images/sample-1.jpg">
+-->
+							<img src="{{ post.file_url if post.file_url else url_for('static', filename='images/feather.png') }}">
+							<!-- <p class="truncate body">{{ post.body | striptags }}</p> -->
 						</div>
-						<div class="card-action">
-							<a href="{{ url_for('detail', post_id=post.id) }}">Read</a>
+						<div class="card-content">
+							<span class="card-title title">{{ post.title }}</span>
+							<p class="date grey-text">{{ post.date() }}</p>
+							<!-- <a href="{{ url_for('detail', post_id=post.id) }}">Read</a> -->
 						</div>
 					</div>
 				</div>
 			{% endfor %}
 			</div>
-<!--
-		<div class="collection">
-		{% for post in posts %}
-			<a href="{{ url_for('detail', post_id=post.id) }}" class="collection-item">{{ post.title }}<span class="right">{{ post.date() }}</span></a>
-		{% endfor %}
-		</div>
--->
 	{% else %}
 		<h3>No posts.</h3>
 	{% endif %}
